@@ -68,6 +68,8 @@ function readProjectsFromStorage() {
   return projects;
 }
 
+
+//Data Picker for due date task
 $('#taskDueDate').datepicker({
     changeMonth: true,
     changeYear: true,
