@@ -17,10 +17,9 @@ function handleProjectFormSubmit(event) {
 
   // ? Read user input from the form
   const projectName = projectNameInputEl.val().trim();
-  const projectType = projectTypeInputEl.val(); // don't need to trim select input
-  const projectDate = projectDateInputEl.val(); // yyyy-mm-dd format
+  const projectType = projectTypeInputEl.val(); 
+  const projectDate = projectDateInputEl.val(); 
  
-
   const newProject = {
   // ? Here we use a Web API called `crypto` to generate a random id for our project. This is a unique identifier that we can use to find the project in the array. `crypto` is a built-in module that we can use in the browser and Nodejs.    id: crypto.randomUUID(),
     name: projectName,
@@ -28,6 +27,45 @@ function handleProjectFormSubmit(event) {
     dueDate: projectDate,
     status: 'to-do',
   };
+
+    // ? Pull the projects from localStorage and push the new project to the array
+    const projects = readProjectsFromStorage();
+    projects.push(newProject);
+  
+    // ? Save the updated projects array to localStorage
+    saveProjectsToStorage(projects);
+  
+    // ? Print project data back to the screen
+    printProjectData();
+  
+    // ? Clear the form inputs
+    projectNameInputEl.val('');
+    projectTypeInputEl.val('');
+    projectDateInputEl.val('');
+  
+}
+
+function saveProjectsToStorage(projects) {
+  localStorage.setItem('projects', JSON.stringify(projects));
+}
+
+
+// ? Reads projects from local storage and returns array of project objects.
+// ? If there are no projects in localStorage, it initializes an empty array ([]) and returns it.
+function readProjectsFromStorage() {
+  console.log('Entrou aqui agora');
+
+  // ? Retrieve projects from localStorage and parse the JSON to an array.
+  // ? We use `let` here because there is a chance that there are no projects in localStorage (which means the projects variable will be equal to `null`) and we will need it to be initialized to an empty array.
+  let projects = JSON.parse(localStorage.getItem('projects'));
+
+  // ? If no projects were retrieved from localStorage, assign projects to a new empty array to push to later.
+  if (!projects) {
+    projects = [];
+  }
+
+  // ? Return the projects array either empty or with data in it whichever it was determined to be by the logic right above.
+  return projects;
 }
 
 $('#taskDueDate').datepicker({
