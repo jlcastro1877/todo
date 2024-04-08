@@ -47,9 +47,9 @@ function createProjectCard(project) {
 
     
     if (now.isSame(taskDueDate, 'day')) {
-      taskCard.addClass('bg-warning text-white');
+      taskCard.addClass('bg-warning text-black');
     } else if (now.isAfter(taskDueDate)) {
-      taskCard.addClass('bg-danger text-white');
+      taskCard.addClass('bg-danger text-black');
       cardDeleteBtn.addClass('border-light');
     }
   }
@@ -180,13 +180,22 @@ function handleDrop(event, ui) {
   printProjectData();
 }
 
+$('.lane').droppable({
+  accept: '.draggable',
+  drop: handleDrop,
+});
+
+
+//Data Picker for due date task
+$('#taskDueDate').datepicker({
+  changeMonth: true,
+  changeYear: true,
+});
+
+
 projectFormEl.on('submit', handleProjectFormSubmit);
 
-console.log(document);
-
-
-
-// projectDisplayEl.on('click', '.btn-delete-project', handleDeleteProject);
+projectDisplayEl.on('click', '.btn-delete-project', handleDeleteProject);
 
 // displayTime();
 // setInterval(displayTime, 1000);
@@ -201,14 +210,4 @@ console.log(document);
 //   });
 // });
 
-  $('.lane').droppable({
-    accept: '.draggable',
-    drop: handleDrop,
-  });
 
-
-//Data Picker for due date task
-$('#taskDueDate').datepicker({
-    changeMonth: true,
-    changeYear: true,
-  });
