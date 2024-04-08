@@ -40,7 +40,7 @@ function createProjectCard(project) {
     .attr('data-project-id', project.id);
   cardDeleteBtn.on('click', handleDeleteProject);
 
-  
+  //Define card colors
   if (project.dueDate && project.status !== 'done') {
     const now = dayjs();
     const taskDueDate = dayjs(project.dueDate, 'DD/MM/YYYY');
