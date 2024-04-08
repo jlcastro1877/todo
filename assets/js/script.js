@@ -199,12 +199,13 @@ console.log(document);
 //     changeMonth: true,
 //     changeYear: true,
 //   });
+// });
 
   $('.lane').droppable({
     accept: '.draggable',
     drop: handleDrop,
   });
-// });
+
 
 //Data Picker for due date task
 $('#taskDueDate').datepicker({
