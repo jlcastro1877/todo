@@ -47,9 +47,9 @@ function createProjectCard(project) {
 
     
     if (now.isSame(taskDueDate, 'day')) {
-      taskCard.addClass('bg-warning text-white');
+      taskCard.addClass('bg-warning text-black');
     } else if (now.isAfter(taskDueDate)) {
-      taskCard.addClass('bg-danger text-white');
+      taskCard.addClass('bg-danger text-black');
       cardDeleteBtn.addClass('border-light');
     }
   }
