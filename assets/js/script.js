@@ -180,13 +180,22 @@ function handleDrop(event, ui) {
   printProjectData();
 }
 
+$('.lane').droppable({
+  accept: '.draggable',
+  drop: handleDrop,
+});
+
+
+//Data Picker for due date task
+$('#taskDueDate').datepicker({
+  changeMonth: true,
+  changeYear: true,
+});
+
+
 projectFormEl.on('submit', handleProjectFormSubmit);
 
-console.log(document);
-
-
-
-// projectDisplayEl.on('click', '.btn-delete-project', handleDeleteProject);
+projectDisplayEl.on('click', '.btn-delete-project', handleDeleteProject);
 
 // displayTime();
 // setInterval(displayTime, 1000);
@@ -201,14 +210,3 @@ console.log(document);
 //   });
 // });
 
-  $('.lane').droppable({
-    accept: '.draggable',
-    drop: handleDrop,
-  });
-
-
-//Data Picker for due date task
-$('#taskDueDate').datepicker({
-    changeMonth: true,
-    changeYear: true,
-  });
