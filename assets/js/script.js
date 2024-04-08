@@ -182,6 +182,10 @@ function handleDrop(event, ui) {
 
 projectFormEl.on('submit', handleProjectFormSubmit);
 
+console.log(document);
+
+
+
 // projectDisplayEl.on('click', '.btn-delete-project', handleDeleteProject);
 
 // displayTime();
@@ -196,10 +200,10 @@ projectFormEl.on('submit', handleProjectFormSubmit);
 //     changeYear: true,
 //   });
 
-//   $('.lane').droppable({
-//     accept: '.draggable',
-//     drop: handleDrop,
-//   });
+  $('.lane').droppable({
+    accept: '.draggable',
+    drop: handleDrop,
+  });
 // });
 
 //Data Picker for due date task
